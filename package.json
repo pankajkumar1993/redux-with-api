@@ -5,11 +5,15 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
-    "lint": "eslint .",
     "preview": "vite preview",
     "test": "vitest",
-    "test:ui": "vitest --ui"
+    "test:ui": "vitest --ui",
+    "build": "webpack --config config/webpack-production.js --env ENV_SOURCE=deploy",
+    "start": "webpack-dev-server --config config/webpack-development.js",
+    "test:all": "react-scripts test --watchAll=false -u",
+    "eject": "react-scripts eject",
+    "lint": "tsc --noEmit && eslint --fix \"./src/**/*.{js,jsx,ts,tsx}\"",
+    "format": "prettier --write \"./src/**/*.{js,jsx,ts,tsx,json,css,scss,md}\""
   },
   "dependencies": {
     "@redux-devtools/extension": "^3.3.0",
